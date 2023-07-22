@@ -1,0 +1,4 @@
+pandas
+web3
+dearpygui
+dearpygui_ext
