@@ -88,7 +88,7 @@ def balance_logic(
         w3_zora = Web3(Web3.HTTPProvider(settings.ZORA_RPC))
         w3_eth = Web3(Web3.HTTPProvider(settings.ETH_RPC))
 
-    balance_zora = w3_zora.eth.get_balance(account['address'])
+    balance_zora = w3_zora.eth.get_balance(Web3.to_checksum_address(account['address']))
     logger.info_log(account['address'], f'Balance on Zora Network is {Web3.from_wei(balance_zora, "ether")} eth.')
 
     zora_fee_in_wei = calculate_zora_fee_in_wei(settings.MINT_PRICE, settings.GAS_PRICE_FOR_MINT, settings.GAS_FOR_MINT, w3_eth, settings.IS_TESTNET)
@@ -97,7 +97,7 @@ def balance_logic(
     if balance_zora < zora_fee_in_wei:
         logger.warning_log(account['address'], f'Insufficient funds on Zora Network.')
 
-        balance_eth_in_wei = w3_eth.eth.get_balance(account['address'])
+        balance_eth_in_wei = w3_eth.eth.get_balance(Web3.to_checksum_address(account['address']))
         logger.info_log(account['address'], f'Balance on Ethereum is {Web3.from_wei(balance_eth_in_wei, "ether")} eth.')
 
         if balance_eth_in_wei < zora_fee_in_wei:

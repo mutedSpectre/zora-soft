@@ -57,7 +57,7 @@ def mint_logic(
     fee = calculate_zora_fee_in_wei(settings.MINT_PRICE, settings.GAS_PRICE_FOR_MINT, settings.GAS_FOR_MINT, w3_eth, settings.IS_TESTNET)
 
     while True:
-        balance_zora = w3_zora.eth.get_balance(account['address'])
+        balance_zora = w3_zora.eth.get_balance(Web3.to_checksum_address(account['address']))
         if balance_zora >= fee:
             break
         logger.info_log(account['address'], f'Waiting for bridge confirmation on Zora Network. Re-verify after 30 seconds.')
@@ -76,7 +76,7 @@ def mint_logic(
         'value': w3_zora.to_wei(settings.MINT_PRICE, 'ether'),
         'gas': int(settings.GAS_FOR_MINT),
         'gasPrice': w3_zora.to_wei(settings.GAS_PRICE_FOR_MINT, 'gwei'),
-        'nonce': w3_zora.eth.get_transaction_count(account['address'])
+        'nonce': w3_zora.eth.get_transaction_count(Web3.to_checksum_address(account['address']))
     })
 
     logger.info_log(account['address'], f'Sending a transaction for minting.')
