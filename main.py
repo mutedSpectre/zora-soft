@@ -78,24 +78,28 @@ def start_callback(sender, app_data):
         testnet=dpg.get_value('IS_TESTNET'))
 
     while True:
-        data_csv = pd.read_csv(dpg.get_value('file_path'))
-        if data_csv['done'].isna().any():
-            random_row = data_csv.query('done.isna()', engine='python').sample()
-            row = random_row.iloc[0]
-            logger.info_log(row['address'], 'Work! Work! Work!')
-            try:
-                balance_status = balance_logic(account=row, settings=settings, logger=logger)
-                if balance_status == True:
-                    mint_status = mint_logic(account=row, settings=settings, logger=logger)
-                    if mint_status == True:
-                        data_csv.at[random_row.index[0], 'done'] = 'done'
-                        data_csv.to_csv(dpg.get_value('file_path'), index=False)
-            except Exception as e:
-                logger.error_log(row['address'], e)
+        try:
+            data_csv = pd.read_csv(dpg.get_value('file_path'))
+            if data_csv['done'].isna().any():
+                random_row = data_csv.query('done.isna()', engine='python').sample()
+                row = random_row.iloc[0]
+                logger.info_log(row['address'], 'Work! Work! Work!')
+                try:
+                    balance_status = balance_logic(account=row, settings=settings, logger=logger)
+                    if balance_status == True:
+                        mint_status = mint_logic(account=row, settings=settings, logger=logger)
+                        if mint_status == True:
+                            data_csv.at[random_row.index[0], 'done'] = 'done'
+                            data_csv.to_csv(dpg.get_value('file_path'), index=False)
+                except Exception as e:
+                    logger.error_log(row['address'], e)
+                    break
+            else:
+                print(f'All wallets finished!')
+                logger.all_info_log(f'All wallets finished!')
                 break
-        else:
-            print(f'All wallets finished!')
-            logger.all_info_log(f'All wallets finished!')
+        except Exception as e:
+            logger.all_error_log('Error while running the script.')
             break
 
 # Functions
@@ -142,7 +146,7 @@ $$___$__$$$$____$$___$$$$$__$$$$$___$$$$__$$_____$$$$$___$$$$____$$___$$__$$_$$$
                 dpg.add_text('Gas price for mint (Gwei):')
                 dpg.add_input_text(tag='GAS_PRICE_FOR_MINT', default_value='0.005')
                 dpg.add_text('Gas for mint:')
-                dpg.add_input_text(tag='GAS_FOR_MINT', default_value='160000')
+                dpg.add_input_text(tag='GAS_FOR_MINT', default_value='130000')
                 dpg.add_text('Max price for gas in Ethereum (Gwei):')
                 dpg.add_input_text(tag='MAX_GAS_IN_GWEI', default_value='18')
                 dpg.add_text('Amount for bridge (ETH):')

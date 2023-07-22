@@ -25,12 +25,12 @@ class Logger:
     """ The logger base class."""
 
     def create_logger(self):
-        """! Render logger window in parent window."""
+        """ Render logger window in parent window."""
 
         self.logz = logger.mvLogger(parent='logger')
     
     def info_log(self, address, text):
-        """! Send a log message to the info level.
+        """ Send a log message to the info level.
 
         @param address The address of account
         @param text    The text for log message
@@ -40,7 +40,7 @@ class Logger:
         self.logz.log_info(f"{addr} | {text}\n")
     
     def all_info_log(self, text):
-        """! Send a log message to the info level without address.
+        """ Send a log message to the info level without address.
 
         @param text The text for log message
         """
@@ -48,7 +48,7 @@ class Logger:
         self.logz.log_info(f"{text}\n")
 
     def warning_log(self, address, text):
-        """! Send a log message to the warn level.
+        """ Send a log message to the warn level.
 
         @param address The address of account
         @param text    The text for log message
@@ -58,7 +58,7 @@ class Logger:
         self.logz.log_warning(f"{addr} | {text}\n")
 
     def error_log(self, address, text):
-        """! Send a log message to the error level.
+        """ Send a log message to the error level.
 
         @param address The address of account
         @param text    The text for log message
@@ -66,3 +66,10 @@ class Logger:
 
         addr = address[:6] + '...' + address[-4:]
         self.logz.log_error(f"{addr} | {text}\n")
+
+    def all_error_log(self, text):
+        """ Send a log message to the error level.
+
+        @param text    The text for log message
+        """
+        self.logz.log_error(f"{text}\n")
