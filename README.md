@@ -1,5 +1,10 @@
 # zora-soft
 
+## Инструкция по запуску:
+```
+pip install -r requirements.txt
+python main.py
+```
 ## Инструкция по настройке:
 ### Zora settings
 - **NFT1155 contact** - адрес контракта в сети Zora, который будет минтиться.
