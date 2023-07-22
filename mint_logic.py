@@ -72,7 +72,7 @@ def mint_logic(
         1,
         Web3.to_hex(b'\x00' * 12 + Web3.to_bytes(hexstr=account['address']))
     ).build_transaction({
-        'from': account['address'],
+        'from': Web3.to_checksum_address(account['address']),
         'value': w3_zora.to_wei(settings.MINT_PRICE, 'ether'),
         'gas': int(settings.GAS_FOR_MINT),
         'gasPrice': w3_zora.to_wei(settings.GAS_PRICE_FOR_MINT, 'gwei'),

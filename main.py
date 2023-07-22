@@ -78,29 +78,29 @@ def start_callback(sender, app_data):
         testnet=dpg.get_value('IS_TESTNET'))
 
     while True:
-        # try:
-        data_csv = pd.read_csv(dpg.get_value('file_path'))
-        if data_csv['done'].isna().any():
-            random_row = data_csv.query('done.isna()', engine='python').sample()
-            row = random_row.iloc[0]
-            logger.info_log(row['address'], 'Work! Work! Work!')
-            # try:
-            balance_status = balance_logic(account=row, settings=settings, logger=logger)
-            if balance_status == True:
-                mint_status = mint_logic(account=row, settings=settings, logger=logger)
-                if mint_status == True:
-                    data_csv.at[random_row.index[0], 'done'] = 'done'
-                    data_csv.to_csv(dpg.get_value('file_path'), index=False)
-            # except Exception as e:
-            #     logger.error_log(row['address'], e)
-            #     break
-        else:
-            print(f'All wallets finished!')
-            logger.all_info_log(f'All wallets finished!')
+        try:
+            data_csv = pd.read_csv(dpg.get_value('file_path'))
+            if data_csv['done'].isna().any():
+                random_row = data_csv.query('done.isna()', engine='python').sample()
+                row = random_row.iloc[0]
+                logger.info_log(row['address'], 'Work! Work! Work!')
+                try:
+                    balance_status = balance_logic(account=row, settings=settings, logger=logger)
+                    if balance_status == True:
+                        mint_status = mint_logic(account=row, settings=settings, logger=logger)
+                        if mint_status == True:
+                            data_csv.at[random_row.index[0], 'done'] = 'done'
+                            data_csv.to_csv(dpg.get_value('file_path'), index=False)
+                except Exception as e:
+                    logger.error_log(row['address'], e)
+                    break
+            else:
+                print(f'All wallets finished!')
+                logger.all_info_log(f'All wallets finished!')
+                break
+        except Exception as e:
+            logger.all_error_log('Error while running the script.')
             break
-        # except Exception as e:
-        #     logger.all_error_log('Error while running the script.')
-        #     break
 
 # Functions
 def main_window():
