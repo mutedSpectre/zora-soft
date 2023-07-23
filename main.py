@@ -4,10 +4,8 @@
 # @mainpage Zora Automatization Software
 #
 # @section description_main Description
-# This is a GUI-enabled program to automate the actions required to get
+# This is a GUI-enabled program to automate the actions required for get
 # a potential airdrop.
-#
-# Copyright (c) 2023 mutedspectre.eth. All rights reserved.
 
 ##
 # @file main.py
@@ -30,9 +28,7 @@
 #
 # @section author_main Author(s)
 # - Created by mutedspectre.eth on 07/20/2023.
-# - Modified by mutedspectre.eth on 07/22/2023.
-#
-# Copyright (c) 2023 mutedspectre.eth. All rights reserved.
+# - Modified by mutedspectre.eth on 07/24/2023.
 
 # Imports
 from balance_logic import balance_logic

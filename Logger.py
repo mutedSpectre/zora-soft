@@ -15,9 +15,7 @@
 #
 # @section author_logger Author(s)
 # - Created by mutedspectre.eth on 07/20/2023.
-# - Modified by mutedspectre.eth on 07/21/2023.
-#
-# Copyright (c) 2023 mutedspectre.eth. All rights reserved.
+# - Modified by mutedspectre.eth on 07/24/2023.
 
 from dearpygui_ext import logger
 

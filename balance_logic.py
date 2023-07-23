@@ -19,9 +19,7 @@
 #
 # @section author_balance_logic Author(s)
 # - Created by mutedspectre.eth on 07/20/2023.
-# - Modified by mutedspectre.eth on 07/22/2023.
-#
-# Copyright (c) 2023 mutedspectre.eth. All rights reserved.
+# - Modified by mutedspectre.eth on 07/24/2023.
 
 # Imports
 from typing import Any
