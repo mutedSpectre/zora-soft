@@ -1,0 +1,2 @@
+nft_contract,nft_id,mint_price,gas_price_for_mint,gas_for_mint,is_testnet_mint,max_gas_in_gwei,amount_for_bridge,accuracy_in_amount_for_bridge,is_testnet_bridge
+0xF41A3e3033D4e878943194B729AeC993a4Ea2045,5,0.000777,0.005,130000,False,18,0.001,0.00005,False
