@@ -1,2 +1,2 @@
-nft_contract,nft_id,mint_price,gas_price_for_mint,gas_for_mint,is_testnet_mint,max_gas_in_gwei,amount_for_bridge,accuracy_in_amount_for_bridge,is_testnet_bridge
-0xF41A3e3033D4e878943194B729AeC993a4Ea2045,5,0.000777,0.005,130000,False,18,0.001,0.00005,False
+nft_url,mint_price,gas_price_for_mint,gas_for_mint,is_testnet_mint,max_gas_in_gwei,min_amount_for_bridge,max_amount_for_bridge,is_testnet_bridge
+https://zora.co/collect/zora:0x5ca17551b686baf0c6bd7727e153b95be9b1ae0d/1,0.000777,0.005,130000,False,18,0.001,0.0013,False
