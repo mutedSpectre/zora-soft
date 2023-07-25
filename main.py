@@ -164,7 +164,7 @@ $$___$__$$$$____$$___$$$$$__$$$$$___$$$$__$$_____$$$$$___$$$$____$$___$$__$$_$$$
 
                     # second child window with logger
                     with dpg.child_window(width=1068, tag='logger_mint', border=False):
-                        logger_mint.create_logger()
+                        logger_mint.create_logger('mint')
 
             with dpg.tab(
                 tag="bridge_tab",
@@ -197,7 +197,7 @@ $$___$__$$$$____$$___$$$$$__$$$$$___$$$$__$$_____$$$$$___$$$$____$$___$$__$$_$$$
 
                     # second child window with logger
                     with dpg.child_window(width=1068, tag='logger_bridge', border=False):
-                        logger_bridge.create_logger()
+                        logger_bridge.create_logger('bridge')
 
             with dpg.tab(
                 tag='accounts_tab',
