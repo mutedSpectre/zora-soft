@@ -1,12 +1,15 @@
-# zora-soft
+<p align="center"><img src="resources/zora.jpg" alt="zora logo" width=60% height=60%/></p>
+<h1 align="center">Zora Software V2</h1>
 
-![Zora](resources/zora.png)
+---
 
 ## Инструкция по запуску:
 ```
 pip install -r requirements.txt
 python main.py
 ```
+
+---
 ## Инструкция по настройке:
 ### Mint settings
 - **NFT 1155 URL** - адрес NFT коллекции. Важно! На данный момент это должна быть 1155 NFT и только в сети Zora.
@@ -22,6 +25,7 @@ python main.py
 Важно! Рандомное число будет с максимальным знаком после запятой, из этих двух чисел! Т.е. 0.01 и 0.012 - число будет с 3-мя знаками после разделителя (напр. 0.011).
 - **Testnet** - включает Testnet для функции bridge.
 
+---
 ## Благодарности:
 Большое спасибо выражаю цветным братишкам за помощь в консультировании и тестировании:
 - вишнёвый (он же Вишня) ([https://t.me/vishnya_crypto](https://t.me/vishnya_crypto))
