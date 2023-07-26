@@ -108,7 +108,7 @@ def mint_logic(
 
     fee = helpers.calculate_zora_fee_in_wei(Web3.to_wei(settings['mint_price'], 'ether'), settings['gas_price_for_mint'], settings['gas_for_mint'], w3_eth, settings['is_testnet_mint'])
 
-    logger.info_log(account['address'], f'NFT price: {format(w3_zora.from_wei(fee, "ether"), "f")} ETH.')
+    logger.info_log(account['address'], f'NFT price with network fee: {format(w3_zora.from_wei(fee, "ether"), "f")} ETH.')
 
     ## Check if balance is enough
     while True:
@@ -127,7 +127,7 @@ def mint_logic(
         Web3.to_hex(b'\x00' * 12 + Web3.to_bytes(hexstr=account['address']))
     ).build_transaction({
         'from': Web3.to_checksum_address(account['address']),
-        'value': Wei(fee),
+        'value': Web3.to_wei(settings['mint_price'], 'ether'),
         'gas': int(settings['gas_for_mint']),
         'gasPrice': w3_zora.to_wei(settings['gas_price_for_mint'], 'gwei'),
         'nonce': w3_zora.eth.get_transaction_count(Web3.to_checksum_address(account['address']))

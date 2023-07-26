@@ -151,7 +151,13 @@ def account_edit_window(account) -> None:
     @param account Account
     """
 
-    with dpg.window(tag='account_edit_window', label='Edit account "' + str(account['address']) + '"', width=700, height=200):
+    with dpg.window(
+        tag='account_edit_window', 
+        label='Edit account "' + str(account['address']) + '"', 
+        width=700, 
+        height=200,
+        on_close=cancel_account_callback
+    ):
         with dpg.group(horizontal=True):
             dpg.add_text('Address:')
             dpg.add_input_text(tag='account_address', default_value=account['address'])
